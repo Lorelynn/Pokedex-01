@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import useFetch from './Fetch';
-import useSearch from './useSearch'; 
+import { useContext, useState } from 'react';
+import useFetch from './hooks/useFetch';
+import useSearch from './hooks/useSearch'; 
 import SearchBar from './SearchBar';
+import { PokemonContext } from './context/PokemonContext';
 
 function Home() {
-    const [data, loading, error] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=20');
-    
-    const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-    const { search, setSearch, searchFilter } = useSearch(data);
+    const {loading, error, searchFilter} = useContext(PokemonContext);
+
+    const [selectedPokemon, setSelectedPokemon] = useState(null);
 
     return (
         <div className="Home">
             
-            <SearchBar search={search} setSearch={setSearch} />
+            <SearchBar/>
 
             <div className='home-content'>
                 <h1>Pokemon List</h1>
