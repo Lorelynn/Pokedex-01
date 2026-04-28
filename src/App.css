@@ -1,3 +1,31 @@
+.navbar{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  z-index: 9999;
+}
+
+.navbar img{
+  height: 50px;
+ 
+}
+.navbar h1{
+  color: white;
+}
+
+.Home{
+  margin-top: 7rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
 .Search{
   display: flex;
   justify-content: left;
@@ -7,7 +35,7 @@
   gap: 1rem;
   padding: 0.5rem 1rem; 
   max-width: 600px;
-  margin: 5rem auto;
+  margin: 0 auto;
 }
 
 
@@ -20,3 +48,416 @@
   border: none;
   outline: none;
 }
+
+.list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 2rem; 
+}
+
+.pokemon-list{
+  margin: 1rem 4rem 1rem 4rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding : 0 1rem 0 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.pokemon-list:hover {
+  transform: translateY(-5px);
+}
+
+.pokemon-list img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+}
+
+.type-badge {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  text-transform: capitalize; 
+}
+
+.bg-grass { background-color: #78C850; color: white; box-shadow: 0 5px 15px -3px #78C850; }
+.bg-fire { background-color: #F08030; color: white; box-shadow: 0 5px 15px -3px #F08030; }
+.bg-water { background-color: #6890F0; color: white; box-shadow: 0 5px 15px -3px #6890F0; }
+.bg-bug { background-color: #A8B820; color: white; box-shadow: 0 5px 15px -3px #A8B820; }
+.bg-normal { background-color: #A8A878; color: black; box-shadow: 0 5px 15px -3px #A8A878; }
+.bg-poison { background-color: #A040A0; color: white; box-shadow: 0 5px 15px -3px #A040A0; }
+.bg-electric { background-color: #F8D030; color: black; box-shadow: 0 5px 15px -3px #F8D030; }
+
+
+/* modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding-top: 6rem;  
+  padding-bottom: 3rem; 
+  box-sizing: border-box;
+  
+  z-index: 1000;
+}
+
+.modal-container {
+  height: auto; 
+  max-height: 110%;
+  width: 75%;
+  max-width: 35rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-header {
+  padding: 1rem;
+  position: relative;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+.watermark {
+  position: absolute;
+  top: 10%;
+  left: 8%;
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  margin: 1.5rem;
+  z-index: 1;
+  letter-spacing: 5px;
+}
+
+.modal-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-image {
+  width: 9rem;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.3));
+}
+
+.hero-info {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.hero-id {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.hero-name {
+  font-size: 2rem;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.badge {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+/* Tab Menu */
+.modal-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+}
+
+.tab {
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+}
+
+.tab.active {
+  color: white;
+  border-bottom: 3px solid white;
+}
+
+.modal-body {
+  background-color: white;
+  flex-grow: 1; 
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 2rem;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 3;
+  overflow-y: auto;
+}
+
+.section-title {
+  color: #3b82f6; 
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Tabel Data */
+.data-row {
+  display: flex;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.data-label {
+  width: 7rem;
+  color: #666;
+  font-weight: bold;
+}
+
+.data-value {
+  color: #333;
+  text-transform: capitalize;
+}
+
+.abilities-list div {
+  margin-bottom: 0.2rem;
+}
+s
+.evo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  
+  gap: 1rem; 
+  margin-top: 1rem;
+  
+  flex-wrap: wrap; 
+  padding: 0 1rem;
+}
+
+.evo-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative; 
+}
+
+.evo-img {
+  width: 3rem; 
+  height: 3rem;
+  
+  object-fit: contain;
+  filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.15));
+  
+  background-color: #f9fafb;
+  border-radius: 50%;
+  padding: 0.3rem;
+  border: 1px solid #e5e7eb;
+}
+
+.evo-name {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  font-weight: 500;
+  color: #555;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.evo-arrow {
+  position: absolute;
+  
+  right: -1rem; 
+  top: 1.2rem;
+  
+  font-size: 1.2rem;
+  color: #bbb;
+  font-weight: bold;
+}
+
+/* =========================================
+   GLOBAL THEME (LIGHT & DARK MODE)
+   ========================================= */
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+body.dark-mode {
+  background-color: #121212; 
+  color: #f9fafb; 
+}
+
+/* =========================================
+   NAVBAR STYLES
+   ========================================= */
+.navbar {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: fixed;
+  top: 0; right: 0; left: 0;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-light {
+  background-color: #ffffff; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.navbar-light h1 {
+  color: #333333; 
+}
+
+.navbar-dark {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+.navbar-dark h1 {
+  color: #ffffff; 
+}
+
+.navbar img {
+  height: 50px;
+  margin-right: 1rem;
+}
+
+/* Tombol Toggle Tema */
+.theme-toggle-btn {
+  margin-left: auto; 
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+body.dark-mode .theme-toggle-btn {
+  background-color: #374151;
+  color: #f9fafb;
+}
+
+body.dark-mode .home-content h1 {
+  color: #ffffff;
+}
+body.dark-mode .pokemon-list p {
+  color: #ffffff;
+}
+
+/* =========================================
+   SEARCH BAR (LIGHT & DARK MODE)
+   ========================================= */
+
+.Search {
+  background-color: #ffffff; /* Kotak pencarian putih biar menonjol di body yang abu-abu */
+  border: 1px solid #d1d5db; /* Garis tepi abu-abu tipis */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Efek bayangan halus */
+  transition: all 0.3s ease; /* Biar ganti warnanya mulus */
+}
+
+.Search input {
+  color: #1f2937; 
+  background-color: transparent;
+}
+
+.Search input::placeholder {
+  color: #9ca3af;
+}
+
+body.dark-mode .Search {
+  background-color: #1f2937; 
+  border: 1px solid #374151;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+
+body.dark-mode .Search input {
+  color: #f9fafb;
+}
+
+body.dark-mode .Search input::placeholder {
+  color: #6b7280;
+}
+
+body.dark-mode .Search img {
+  filter: invert(1) brightness(2); 
+}
+
+/* =========================================
+   DARK MODE UNTUK MODAL
+   ========================================= */
+
+.modal-body-dark {
+  background-color: #1e293b !important;
+  color: #f8fafc;
+}
+
+.modal-body-dark .data-label {
+  color: #94a3b8;
+}
+
+.modal-body-dark .data-value {
+  color: #f1f5f9;
+}
+
+.modal-body-dark .evo-img {
+  background-color: #334155;
+  border-color: #475569;
+}
+
+.modal-body-dark .evo-name {
+  color: #e2e8f0;
+}
+
+.modal-body-dark .stat-bar-bg {
+  background-color: #334155;
+}
+

@@ -3,6 +3,8 @@ import useFetch from './hooks/useFetch';
 import useSearch from './hooks/useSearch'; 
 import SearchBar from './SearchBar';
 import { PokemonContext } from './context/PokemonContext';
+import { getTypeColor } from './color'
+import PokemonModal from './PokemonModal'
 
 function Home() {
 
@@ -25,11 +27,13 @@ function Home() {
                 ) : (
                     <div className='list'>
                         {searchFilter?.map((item) => {
+                            const primaryType = item.types?.[0]?.type?.name || 'normal';
+                            const cardColor = getTypeColor(primaryType);
                             return(
                                 <div 
-                                    className="pokemon-list" 
+                                    className={`pokemon-list bg-${primaryType}`} 
                                     key={item.name}
-                                    style={{ cursor: 'pointer' }}
+                                    style={{ backgroundColor: cardColor, cursor: 'pointer' }}
                                     onClick={() => setSelectedPokemon(item)}
                                 >
                                     <p>{item.name}</p>
@@ -40,6 +44,11 @@ function Home() {
                     </div>
                 )}
             </div>
+
+            <PokemonModal 
+                pokemon={selectedPokemon} 
+                onClose={() => setSelectedPokemon(null)} 
+            />
 
         </div>
     );

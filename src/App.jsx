@@ -7,6 +7,7 @@ import { PokemonContext } from './context/PokemonContext';
 
 import useFetch from './hooks/useFetch'
 import useSearch from './hooks/useSearch'
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   const [data, loading, error] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=20');
@@ -16,22 +17,23 @@ function App() {
 
   return (
     <>
-      <PokemonContext.Provider value={allData}>
-        <BrowserRouter>
-          <Navbar/>
+      <ThemeProvider>
+        <PokemonContext.Provider value={allData}>
+          <BrowserRouter>
+            <Navbar/>
 
-          <Routes>
+            <Routes>
 
-            <Route 
-              path='/'
-              element={<Home />}
+              <Route 
+                path='/'
+                element={<Home />}
 
-            ></Route>
+              ></Route>
 
-          </Routes>
-        </BrowserRouter>
-      </PokemonContext.Provider>
-
+            </Routes>
+          </BrowserRouter>
+        </PokemonContext.Provider>
+      </ThemeProvider>
     </>
   )
 }
